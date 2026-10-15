@@ -14,3 +14,4 @@
 - Reference ship imagery through committed Lovable Assets pointers rather than external image-service URLs so the recreated guide owns its media references.
 - Keep side-by-side comparisons in the dedicated `/compare` route and derive every displayed calculation from the shared guide engine, so comparison never introduces a second version of the reference math.
 - Keep live counter data in the dedicated `/counters` route, fetched from zKillboard solo losses through a server function, so third-party requests stay server-side and separate from the offline guide math.
+- Self-hosting uses the root `Dockerfile` (Nitro `node-server` preset) and copies `docker/static` ship images into the output, because `/__l5e` asset URLs only resolve on Lovable hosting; refresh `docker/static` when ship assets change.
