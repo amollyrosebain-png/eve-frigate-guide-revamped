@@ -2,6 +2,8 @@ import { useMemo, useState } from 'react';
 import { Button } from '@/components/ui/button';
 import { ships, damageTypes, weapons, sdeBuild, yearbook, shipImage, sortedShips, profile } from './engine';
 import type { Ammo } from './engine';
+import { Crosshair, ExternalLink, Search, RotateCcw } from 'lucide-react';
+import orbitalBackground from '@/assets/orbital-background.jpg';
 
 type Ship = (typeof ships)[number];
 const all = 'all';
@@ -22,13 +24,15 @@ export default function FrigateGuide() {
   const list = useMemo(() => sortedShips(ships.filter((s: Ship) => (!search || s.name.toLowerCase().includes(search.trim().toLowerCase())) && (faction === all || faction === s.faction) && (shipClass === all || shipClass === s.class) && (group === all || group === s.group) && (!yearbookOnly || yearbook(s)))), [search, faction, shipClass, group, yearbookOnly]);
   function clearFilters() { setSearch(''); setFaction(all); setShipClass(all); setGroup(all); setYearbookOnly(false); }
   function reset() { clearFilters(); setSelected(null); setWeapon(weapons[0]?.label ?? ''); }
-  return <main className="eve-guide"><div className="app">
-    <header><div><h1>EVE FRIGATE DAMAGE GUIDE <span className="guide-version">v01</span></h1><div className="sub">Offline CCP SDE database · weakness-aware ammunition calculator</div></div><div className="sub" aria-live="polite">{list.length} / {ships.length} ships</div></header>
+  return <main className="eve-guide"><img className="orbital-backdrop" src={orbitalBackground} alt="" width={1920} height={1088} /><div className="app">
+    <div className="system-ribbon"><div className="ribbon-title"><span>EVE ONLINE</span><span>FRIGATE INTELLIGENCE</span></div><a href="https://www.drve.co.uk/EVE_Frigate_Damage_Guide_Yearbook_Enhanced.html" target="_blank" rel="noopener noreferrer">ORIGINAL GUIDE <ExternalLink size={11} /></a></div>
+    <header><div><h1>EVE.FRIGATE_GUIDE<span className="brand-cursor">_</span> <span className="guide-version">v01</span></h1><div className="header-sub">DAMAGE ANALYSIS / TACTICAL PROFILES / YEARBOOK 2025b</div></div><div className="header-stats"><div className="header-stat"><small>HULLS INDEXED</small><b>{ships.length}</b></div><div className="header-stat"><small>YEARBOOK PROFILES</small><b>47</b></div><div className="header-stat"><small>SDE BUILD</small><b>{sdeBuild}</b></div></div></header>
+    <div className="status-line"><span className="system-status"><i className="status-led" /> SDE LOADED</span><span aria-live="polite">{list.length} / {ships.length} SHIPS</span></div>
     <div className="toolbar">
-      <input aria-label="Search frigates" placeholder="Search frigates…" autoComplete="off" value={search} onChange={e => setSearch(e.target.value)} />
+      <div className="search-control"><Search /><input aria-label="Search frigates" placeholder="Search frigates…" autoComplete="off" value={search} onChange={e => setSearch(e.target.value)} /></div>
       <select aria-label="Faction" value={faction} onChange={e => setFaction(e.target.value)}><option value={all}>All Factions</option>{factions.map(f => <option key={f}>{f}</option>)}</select>
       <select aria-label="Class" value={shipClass} onChange={e => { setShipClass(e.target.value); setGroup(all); }}><option value={all}>All Classes</option>{['Faction', 'T1', 'T2'].map(c => <option key={c}>{c}</option>)}</select>
-      <Button variant="ghost" className="reset-btn" title="Reset all filters and selections" onClick={reset}>Reset</Button><span className="guide-count-space" />
+      <Button variant="ghost" className="reset-btn" title="Reset all filters and selections" onClick={reset}><RotateCcw /> Reset</Button><span className="guide-count-space" />
     </div>
     <div className="layout"><aside className="sidebar">
       <div className="sidebox"><Button variant="ghost" className="sideall" onClick={clearFilters}><b>ALL SHIPS</b><span>{ships.length}</span></Button><h4>CLASSES</h4>{groups.map(g => <Button key={g} variant="ghost" className={`sideitem ${group === g ? 'active' : ''}`} onClick={() => { setGroup(group === g ? all : g); setShipClass(all); }}><span>{g}</span><span className="sidecount">{ships.filter((s: Ship) => s.group === g).length}</span></Button>)}</div>
@@ -36,10 +40,10 @@ export default function FrigateGuide() {
       <div className="sidebox"><h4>YEARBOOK 2025b</h4><Button variant="ghost" className={`sideall ${yearbookOnly ? 'active' : ''}`} aria-pressed={yearbookOnly} onClick={() => { clearFilters(); setYearbookOnly(!yearbookOnly); }}><b>FW PvP COVERAGE</b><span>47 covered</span></Button><div className="sub data-source">47 Yearbook frigate entries plus the wider FW metagame and engagement data.</div></div>
       <div className="sidebox data-source"><h4>DATA SOURCE</h4>CCP Static Data (SDE)<br />Build {sdeBuild}</div>
     </aside>
-    <div className="grid">{list.length ? list.map((s: Ship) => { const y = yearbook(s); const tier = y?.tier === 'Top' ? 'tier-top' : y?.tier === 'Balanced Plus' ? 'tier-plus' : y?.tier === 'Balanced Minus' ? 'tier-minus' : ''; return <Button key={s.id} variant="ghost" className={`card ${tier} ${selected?.id === s.id ? 'active' : ''}`} aria-pressed={selected?.id === s.id} onClick={() => setSelected(s)}><ShipPicture ship={s} className="shippic" /><div className="cardbody"><div className="name">{s.name}</div><div className="meta">{s.faction} · {s.group}</div>{y && <div className="ybrole">{y.tier} · {y.weapons}</div>}</div></Button>; }) : <div className="empty">No frigates match your filters.</div>}</div>
-    <aside className="detail" aria-live="polite">{selected ? <ShipDetail ship={selected} weapon={weapon} setWeapon={setWeapon} /> : <div className="section"><h2>Select a frigate</h2><p className="sub">The database is embedded in this HTML. No ESI request is made for ship data.</p></div>}</aside>
+    <section className="catalog-region"><div className="catalog-heading">&gt; SHIP DATABASE <span>YEARBOOK USAGE ↓</span></div><div className="grid">{list.length ? list.map((s: Ship) => { const y = yearbook(s); const tier = y?.tier === 'Top' ? 'tier-top' : y?.tier === 'Balanced Plus' ? 'tier-plus' : y?.tier === 'Balanced Minus' ? 'tier-minus' : ''; return <Button key={s.id} variant="ghost" className={`card ${tier} ${selected?.id === s.id ? 'active' : ''}`} aria-pressed={selected?.id === s.id} onClick={() => setSelected(s)}><ShipPicture ship={s} className="shippic" /><span className="ship-number">{String(s.id).padStart(5, '0')}</span><div className="cardbody">{y && <div className="ship-tier">{y.tier}</div>}<div className="name">{s.name}</div><div className="meta">{s.faction} · {s.group}</div>{y && <div className="ybrole">{y.weapons}</div>}</div></Button>; }) : <div className="empty">No frigates match your filters.</div>}</div></section>
+    <aside className="detail" aria-live="polite"><div className="detail-heading">&gt; TACTICAL ANALYSIS <span>{selected ? `HULL ${selected.id}` : 'AWAITING TARGET'}</span></div>{selected ? <ShipDetail ship={selected} weapon={weapon} setWeapon={setWeapon} /> : <div className="empty-detail"><Crosshair /><h2>NO TARGET SELECTED</h2><p>CCP SDE · 101 hulls<br />Faction Warfare Yearbook 2025b</p><span className="terminal-prompt">&gt; AWAITING HULL DESIGNATION_</span></div>}</aside>
     </div>
-  </div></main>;
+  <footer className="footer-status"><span>CCP STATIC DATA EXPORT · BUILD {sdeBuild}</span><span>YEARBOOK 2025b · 31 MAR 2025 — 31 MAR 2026</span></footer></div></main>;
 }
 function ShipDetail({ ship, weapon, setWeapon }: { ship: Ship; weapon: string; setWeapon: (value: string) => void }) {
   const p = profile(ship, weapon), y = yearbook(ship);
