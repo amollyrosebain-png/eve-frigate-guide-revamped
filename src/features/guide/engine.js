@@ -25,13 +25,6 @@ const TACTICAL_DRONES=[
 ];
 
 function averages(r){return dmg.map((_,i)=>(r.shield[i]+r.armor[i]+r.hull[i])/3)}
-function bestAmmo(r,family){
-  const av=averages(r);
-  return DB.ammo.filter(a=>a.family===family).map(a=>{
-    const score=a.dmg.reduce((sum,v,i)=>sum+v*(1-av[i]/100),0);
-    return {...a,score};
-  }).sort((a,b)=>b.score-a.score || a.name.localeCompare(b.name)).slice(0,2);
-}
 
 function bestAmmo(r,family){
   const av=averages(r);
