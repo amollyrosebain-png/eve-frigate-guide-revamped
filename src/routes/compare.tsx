@@ -2,7 +2,7 @@ import { createFileRoute } from '@tanstack/react-router';
 import FrigateComparison from '@/features/guide/FrigateComparison';
 
 export const Route = createFileRoute('/compare')({
-  validateSearch: (search: Record<string, unknown>): { hulls?: string } => ({ hulls: typeof search.hulls === 'string' ? search.hulls : undefined }),
+  validateSearch: (search: Record<string, unknown>): { hulls?: string | undefined } => ({ hulls: typeof search['hulls'] === 'string' ? search['hulls'] : undefined }),
   head: () => ({ meta: [
     { title: 'Frigate Comparison — EVE Frigate Damage Guide' },
     { name: 'description', content: 'Compare EVE Online frigates side by side with shared weapon damage calculations, ammunition recommendations, SDE resistances and Yearbook tactical stats.' },
