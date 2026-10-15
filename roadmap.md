@@ -1,2 +1,3 @@
 - [ ] Recreate the original guide at the home page using the uploaded HTML source.
 - [ ] Preserve all ship images and verify search, filters, selection, and ammunition calculations.
+- [ ] Apply the visual style of https://socketkill.com/ while retaining the guide's functionality.
