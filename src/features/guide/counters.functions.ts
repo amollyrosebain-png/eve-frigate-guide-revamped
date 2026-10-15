@@ -43,12 +43,15 @@ export const getSoloCounters = createServerFn({ method: 'GET' })
       losses.push(...batch);
       if (batch.length < 200) break;
     }
+    const frigates = await getFrigateIds();
     const tally = new Map<number, number>();
     let sampled = 0;
     for (const km of losses) {
       const players = (km.attackers ?? []).filter(a => a.character_id && a.ship_type_id);
       const killer = players.find(a => a.final_blow) ?? players[0];
       if (!killer?.ship_type_id) continue;
+      // Rank frigate killers only; if the frigate group lookup failed, keep all hulls.
+      if (frigates.size && !frigates.has(killer.ship_type_id)) continue;
       sampled++;
       tally.set(killer.ship_type_id, (tally.get(killer.ship_type_id) ?? 0) + 1);
     }
