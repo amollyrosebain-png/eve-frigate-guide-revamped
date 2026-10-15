@@ -1,0 +1,8 @@
+services:
+  frigates:
+    build: .
+    image: eve-frigate-guide:latest
+    container_name: eve-frigate-guide
+    restart: unless-stopped
+    ports:
+      - "127.0.0.1:3000:3000"
