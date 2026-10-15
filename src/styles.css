@@ -120,7 +120,7 @@
   --popover-foreground: var(--foreground);
   --secondary-foreground: var(--foreground);
   --muted: var(--secondary);
-  --accent-foreground: var(--foreground);
+  --control-foreground: var(--foreground);
   --destructive-foreground: var(--foreground);
   --input: var(--border);
   --ring: var(--primary);
@@ -138,15 +138,16 @@
 
 .eve-guide header{display:flex;justify-content:space-between;align-items:end;gap:18px;margin-bottom:12px}
 
-.eve-guide h1{font-size:25px;margin:0;letter-spacing:.04em}
-.eve-guide h2{margin:0;font-size:25px}
-.eve-guide h3{margin:0 0 10px}
+.eve-guide h1{font-size:25px;font-weight:700;margin:0;letter-spacing:0}
+.eve-guide h2{margin:0;font-size:25px;font-weight:700}
+.eve-guide h3{margin:0 0 10px;font-weight:700;font-size:16px}
+.eve-guide p{margin:1em 0}
 .eve-guide .sub,.eve-guide .note,.eve-guide .meta{color:var(--muted-foreground)}
 
 .eve-guide .toolbar{display:grid;grid-template-columns:minmax(280px,1fr) 145px 145px 90px 90px;gap:9px;margin-bottom:12px}
 
 .eve-guide input,.eve-guide select{width:100%;background:var(--input-background);color:var(--foreground);border:1px solid var(--border);border-radius:7px;padding:10px 12px}
-.eve-guide .reset-btn{width:100%;background:var(--primary);color:var(--accent-foreground);border:1px solid var(--guide-tone-17);border-radius:7px;padding:10px 12px;cursor:pointer;font-weight:700}
+.eve-guide .reset-btn{width:100%;background:var(--accent);color:var(--accent-foreground);border:1px solid var(--guide-tone-17);border-radius:7px;padding:10px 12px;cursor:pointer;font-weight:700}
 .eve-guide .reset-btn:hover{background:var(--guide-tone-51);border-color:var(--primary)}
 .eve-guide .reset-btn:active{transform:translateY(1px)}
 
@@ -156,7 +157,7 @@
 
 .eve-guide .sidebox{background:linear-gradient(145deg,var(--guide-tone-13),var(--guide-tone-31));border:1px solid var(--border);border-radius:8px;padding:11px}
 
-.eve-guide .sidebox h4{margin:0 0 9px;font-size:11px;letter-spacing:.08em;color:var(--guide-tone-23)}
+.eve-guide .sidebox h4{margin:0 0 9px;font-size:11px;font-weight:700;letter-spacing:0;color:var(--guide-tone-23)}
 
 .eve-guide .sideitem{display:flex;justify-content:space-between;gap:7px;padding:6px 5px;border-radius:5px;color:var(--guide-tone-12);cursor:pointer}
 
@@ -166,7 +167,7 @@
 .eve-guide .sidecount{color:var(--muted-foreground);font-size:12px}
 .eve-guide .sideitem.active .sidecount{color:var(--guide-tone-53)}
 
-.eve-guide .sideall{padding:10px;background:var(--primary);border:1px solid var(--guide-tone-17);border-radius:7px;margin-bottom:9px;cursor:pointer}
+.eve-guide .sideall{padding:10px;background:var(--accent);border:1px solid var(--guide-tone-17);border-radius:7px;margin-bottom:9px;cursor:pointer}
 
 .eve-guide .sideall b{display:block;font-size:12px}
 .eve-guide .sideall span{color:var(--guide-tone-43);font-size:12px}

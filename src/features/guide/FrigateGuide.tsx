@@ -1,6 +1,7 @@
 import { useMemo, useState } from 'react';
 import { Button } from '@/components/ui/button';
 import { ships, damageTypes, weapons, sdeBuild, yearbook, shipImage, sortedShips, profile } from './engine';
+import type { Ammo } from './engine';
 
 type Ship = (typeof ships)[number];
 const all = 'all';
@@ -17,10 +18,10 @@ export default function FrigateGuide() {
   const [group, setGroup] = useState(all);
   const [yearbookOnly, setYearbookOnly] = useState(false);
   const [selected, setSelected] = useState<Ship | null>(null);
-  const [weapon, setWeapon] = useState(weapons[0].label);
+  const [weapon, setWeapon] = useState(weapons[0]?.label ?? '');
   const list = useMemo(() => sortedShips(ships.filter((s: Ship) => (!search || s.name.toLowerCase().includes(search.trim().toLowerCase())) && (faction === all || faction === s.faction) && (shipClass === all || shipClass === s.class) && (group === all || group === s.group) && (!yearbookOnly || yearbook(s)))), [search, faction, shipClass, group, yearbookOnly]);
   function clearFilters() { setSearch(''); setFaction(all); setShipClass(all); setGroup(all); setYearbookOnly(false); }
-  function reset() { clearFilters(); setSelected(null); setWeapon(weapons[0].label); }
+  function reset() { clearFilters(); setSelected(null); setWeapon(weapons[0]?.label ?? ''); }
   return <main className="eve-guide"><div className="app">
     <header><div><h1>EVE FRIGATE DAMAGE GUIDE <span className="guide-version">v01</span></h1><div className="sub">Offline CCP SDE database · weakness-aware ammunition calculator</div></div><div className="sub" aria-live="polite">{list.length} / {ships.length} ships</div></header>
     <div className="toolbar">
@@ -43,9 +44,9 @@ export default function FrigateGuide() {
 function ShipDetail({ ship, weapon, setWeapon }: { ship: Ship; weapon: string; setWeapon: (value: string) => void }) {
   const p = profile(ship, weapon), y = yearbook(ship);
   const recommendations = [
-    { title: 'Best damage', kind: 'damage', a: p.ammo.damage, metric: (a: typeof p.ammo.damage) => `Damage ${a.rawScore.toFixed(1)} · ${a.weaknessName} weakness ${a.weaknessDamage.toFixed(1)}`, tag: 'MAX DAMAGE + WEAKNESS' },
-    { title: 'Best application', kind: 'application', a: p.ammo.application, metric: (a: typeof p.ammo.application) => `Applied ${a.appliedDamage.toFixed(1)} · ${a.weaknessName} weakness ${a.weaknessDamage.toFixed(1)}`, tag: 'APPLICATION + WEAKNESS' },
-    { title: 'Best balance', kind: 'balance', a: p.ammo.balance, metric: (a: typeof p.ammo.balance) => `Damage ${a.rawScore.toFixed(1)} · Application ${Math.round(a.application * 100)}% · Score ${a.balanceScore.toFixed(1)}`, tag: '70/30 + WEAKNESS + YEARBOOK' },
+    { title: 'Best damage', kind: 'damage', a: p.ammo.damage, metric: (a: Ammo) => `Damage ${a.rawScore.toFixed(1)} · ${a.weaknessName} weakness ${a.weaknessDamage.toFixed(1)}`, tag: 'MAX DAMAGE + WEAKNESS' },
+    { title: 'Best application', kind: 'application', a: p.ammo.application, metric: (a: Ammo) => `Applied ${a.appliedDamage.toFixed(1)} · ${a.weaknessName} weakness ${a.weaknessDamage.toFixed(1)}`, tag: 'APPLICATION + WEAKNESS' },
+    { title: 'Best balance', kind: 'balance', a: p.ammo.balance, metric: (a: Ammo) => `Damage ${a.rawScore.toFixed(1)} · Application ${Math.round(a.application * 100)}% · Score ${a.balanceScore.toFixed(1)}`, tag: '70/30 + WEAKNESS + YEARBOOK' },
   ];
   return <>
     <div className="hero"><div><div className="sub">{ship.faction} · {ship.class} · {ship.group}</div><h2>{ship.name}</h2><div className="weak"><small>WEAKEST AVERAGE RESISTANCE</small><strong>{p.weakest}</strong><span>{p.weakestResistance.toFixed(1)}% average resistance across Shield + Armour + Hull</span></div></div><ShipPicture key={ship.id} ship={ship} className="heroimg" /></div>
@@ -55,7 +56,7 @@ function ShipDetail({ ship, weapon, setWeapon }: { ship: Ship; weapon: string; s
       <div className="tacgrid"><div className="tacitem"><small>Drone</small><b className="drone-rec">{p.drone.name}</b><div className="drone-dmg">{p.drone.damage} damage</div></div><div className="tacitem"><small>Likely fit</small><b>{p.fit.fit}</b></div><div className="tacitem yb-weakness"><small>Weakness · Yearbook</small><b>{p.commentary}</b></div><div className="tacitem"><small>Damage weakness</small><b className="weakness-main">{p.weakness.name}</b><div className="weakness-detail">{p.weakness.type === 'average' ? 'Lowest average resistance' : `${p.weakness.type} · ${Math.min(...p.weakness.values).toFixed(1)}% resistance`}</div></div><div className="tacitem"><small>Engagement</small><b className="engage">{p.fit.engage}</b></div><div className="tacitem"><small>Threat level</small><b className={p.threat.cls}>{p.threat.label}</b></div></div>
       <div className="source-tag">{y ? 'Yearbook-backed PvP profile' : 'SDE-only estimate: no Yearbook profile is available for this ship'}. Ammo is shown as three weakness-aware recommendations: maximum resistance-adjusted damage, maximum applied damage at the likely engagement, and a balanced 70% damage / 30% application choice. Application uses the Yearbook's archetype ranges and representative transversal, plus weapon/ammunition tracking and range modifiers. All three choices explicitly exploit the calculated damage weakness; the balanced choice also uses small Yearbook-calibrated priors for documented choices such as Depleted Uranium for Firetail artillery, Xray for beam kiting and the weakness of Scorch for scram-kiting pulse contexts. The Weakness box is taken from the ship-specific limitations, counters and fit drawbacks described in the Yearbook 2025b profile commentary; it is not inferred from the SDE resistance data. This is an application estimate, not an exact hit-chance simulation for an unknown target fit.</div>
     </div></div>
-    <div className="section"><h3>Average resistance</h3><div className="resgrid">{damageTypes.map((d: string, i: number) => <div className="res" key={d}><span>{d}</span><b>{p.average[i].toFixed(1)}%</b><meter className="res-meter" min={0} max={100} value={p.average[i]} aria-label={`${d} resistance`} /></div>)}</div></div>
+    <div className="section"><h3>Average resistance</h3><div className="resgrid">{damageTypes.map((d: string, i: number) => <div className="res" key={d}><span>{d}</span><b>{(p.average[i] ?? 0).toFixed(1)}%</b><meter className="res-meter" min={0} max={100} value={p.average[i]} aria-label={`${d} resistance`} /></div>)}</div></div>
     <div className="section"><h3>Resistance by layer</h3><div className="table-wrap"><table><thead><tr><th>Layer</th>{damageTypes.map((d: string) => <th key={d}>{d}</th>)}</tr></thead><tbody>{[['Shield', ship.res.shield], ['Armour', ship.res.armor], ['Hull', ship.res.hull], ['Average', p.average]].map(([name, values]) => <tr key={String(name)}><td>{String(name)}</td>{(values as number[]).map((v, i) => <td key={i}>{v.toFixed(1)}%</td>)}</tr>)}</tbody></table></div></div>
     <div className="section"><h3>Best ammunition by frigate weapon type</h3><p className="note">Ranked from the embedded CCP SDE ammunition damage values against this ship's average resistance. This is a damage-only ranking; range, tracking, explosion radius/velocity, skills and target fit are not included.</p><div className="ammo">{p.rankings.map((r: { family: string; ammo: { name: string; score: number }[] }) => <div className="ammoitem" key={r.family}><b>{r.family}</b><div className="rank-first">🥇 {r.ammo[0]?.name}</div><div className="meta">🥈 {r.ammo[1]?.name || '—'}</div><div className="score">Damage score: {r.ammo[0]?.score.toFixed(2)}</div></div>)}</div></div>
     <div className="section"><div className="note">Data source: CCP Static Data Export build {sdeBuild}. Resistance values use CCP Dogma resonance attributes (1.0 = 0% resistance).</div></div>
