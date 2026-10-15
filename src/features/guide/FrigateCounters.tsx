@@ -8,7 +8,7 @@ import { getSoloCounters } from './counters.functions';
 
 const choices = sortedShips(ships);
 
-export default function FrigateCounters({ targetId }: { targetId?: number }) {
+export default function FrigateCounters({ targetId }: { targetId?: number | undefined }) {
   const navigate = useNavigate();
   const target = ships.find(s => s.id === targetId);
   const q = useQuery({
