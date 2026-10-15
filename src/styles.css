@@ -284,3 +284,15 @@
 .eve-guide .counter-best h2 { font-size: 1.6rem; margin: .2rem 0; color: var(--primary); }
 .eve-guide .counter-bar { display: inline-block; width: 6rem; height: .5rem; margin-right: .5rem; background: color-mix(in oklch, var(--primary) 15%, transparent); vertical-align: middle; }
 .eve-guide .counter-bar span { display: block; height: 100%; background: var(--primary); }
+
+.eve-guide .guide-credits { margin-top:24px;padding:16px 18px;display:grid;gap:11px;border:1px solid var(--border);border-top:2px solid var(--primary);background:var(--panel-fill); }
+.eve-guide .credits-line { display:flex;flex-wrap:wrap;align-items:baseline;gap:7px 16px; }
+.eve-guide .credits-by { font:13px/1.4 var(--font-sans);letter-spacing:.04em;color:var(--foreground); }
+.eve-guide .credits-by a { color:var(--primary);text-decoration:none;border-bottom:1px solid color-mix(in oklch,var(--primary) 45%,transparent); }
+.eve-guide .credits-by a:hover { background:var(--accent);border-bottom-color:var(--primary); }
+.eve-guide .credits-note { font:11px/1.5 var(--font-body);color:var(--muted-foreground); }
+.eve-guide .credits-thanks { max-width:900px;padding-top:11px;border-top:1px dashed var(--panel-border);font:11px/1.75 var(--font-body);color:var(--muted-foreground); }
+.eve-guide .credits-thanks b { color:var(--foreground);font-weight:500; }
+.eve-guide .credits-thanks a { color:var(--gold);text-decoration:none;border-bottom:1px solid color-mix(in oklch,var(--gold) 45%,transparent); }
+.eve-guide .credits-thanks a:hover { background:color-mix(in oklch,var(--gold) 12%,transparent); }
+@media(max-width:700px) { .eve-guide .guide-credits { padding:13px 14px; } .eve-guide .credits-line { gap:5px 10px; } }
