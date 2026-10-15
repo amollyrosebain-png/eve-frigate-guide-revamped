@@ -8,7 +8,7 @@ import { getSoloCounters } from './counters.functions';
 
 const choices = sortedShips(ships);
 
-export default function FrigateCounters({ targetId }: { targetId?: number }) {
+export default function FrigateCounters({ targetId }: { targetId?: number | undefined }) {
   const navigate = useNavigate();
   const target = ships.find(s => s.id === targetId);
   const q = useQuery({
@@ -30,7 +30,7 @@ export default function FrigateCounters({ targetId }: { targetId?: number }) {
         <div className="comparison-scroll"><table className="comparison-table"><thead><tr><th>#</th><th>Killer hull</th><th>Solo kills</th><th>Share</th><th></th></tr></thead><tbody>
           {q.data.counters.map((c, i) => { const inGuide = ships.some(s => s.id === c.shipTypeId); return <tr key={c.shipTypeId}><td>{i + 1}</td><td><a href={`https://zkillboard.com/ship/${c.shipTypeId}/`} target="_blank" rel="noreferrer">{c.name}</a></td><td>{c.kills}</td><td><div className="counter-bar"><span style={{ width: `${c.share * 100}%` }} /></div>{Math.round(c.share * 100)}%</td><td>{inGuide && <Link to="/compare" search={{ hulls: `${c.shipTypeId},${target.id}` }}>Compare</Link>}</td></tr>; })}
         </tbody></table></div>
-        <p className="comparison-note">Based on the last {q.data.sampled} solo losses of the {target.name} on <a href={`https://zkillboard.com/ship/${target.id}/solo/`} target="_blank" rel="noreferrer">zKillboard</a>, counting the hull flown by the player who killed it. More kills means a hull that is popular and successful, not a guaranteed win.</p>
+        <p className="comparison-note">Based on the last {q.data.sampled} solo losses of the {target.name} on <a href={`https://zkillboard.com/ship/${target.id}/solo/`} target="_blank" rel="noreferrer">zKillboard</a>, counting the frigate flown by the player who killed it — non-frigate hulls are excluded. More kills means a frigate that is popular and successful, not a guaranteed win.</p>
       </>}
     <footer className="footer-status"><span>CCP STATIC DATA EXPORT · BUILD {sdeBuild}</span><span>LIVE DATA · ZKILLBOARD.COM</span></footer>
   </div></main>;
