@@ -78,14 +78,12 @@ export const Route = createRootRouteWithContext<{ queryClient: QueryClient }>()(
     meta: [
       { charSet: "utf-8" },
       { name: "viewport", content: "width=device-width, initial-scale=1" },
-      { title: "Lovable App" },
-      { name: "description", content: "Lovable Generated Project" },
-      { name: "author", content: "Lovable" },
-      { property: "og:title", content: "Lovable App" },
-      { property: "og:description", content: "Lovable Generated Project" },
+      { title: "EVE Frigate Damage Guide" },
+      { name: "description", content: "EVE Online frigate resistance and ammunition reference." },
+      { property: "og:title", content: "EVE Frigate Damage Guide" },
+      { property: "og:description", content: "EVE Online frigate resistance and ammunition reference." },
       { property: "og:type", content: "website" },
       { name: "twitter:card", content: "summary_large_image" },
-      { name: "twitter:site", content: "@Lovable" },
     ],
     links: [
       {

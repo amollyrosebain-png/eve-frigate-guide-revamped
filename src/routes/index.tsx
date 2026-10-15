@@ -1,24 +1,14 @@
 import { createFileRoute } from "@tanstack/react-router";
+import FrigateGuide from "@/features/guide/FrigateGuide";
 
-// No head() here: the home route inherits title/description/og/twitter from
-// __root.tsx, and ships no og:image so serve-time hosting can inject the
-// project's social preview (explicit og:image or latest screenshot).
 export const Route = createFileRoute("/")({
-  component: Index,
+  head: () => ({ meta: [
+    { title: "EVE Frigate Damage Guide v01 — Yearbook Enhanced" },
+    { name: "description", content: "Explore 101 EVE Online frigates with CCP SDE resistances, Faction Warfare Yearbook profiles, and weakness-aware ammunition recommendations." },
+    { property: "og:title", content: "EVE Frigate Damage Guide — Yearbook Enhanced" },
+    { property: "og:description", content: "Compare frigate resistances and find ammunition recommendations backed by CCP SDE and the Faction Warfare Yearbook." },
+    { property: "og:type", content: "website" },
+    { name: "twitter:card", content: "summary_large_image" },
+  ] }),
+  component: FrigateGuide,
 });
-
-// IMPORTANT: Replace this placeholder. See ./README.md for routing conventions.
-function Index() {
-  return (
-    <div
-      className="flex min-h-screen items-center justify-center"
-      style={{ backgroundColor: "#fcfbf8" }}
-    >
-      <img
-        data-lovable-blank-page-placeholder="REMOVE_THIS"
-        src="https://cdn.gpteng.co/blank-app-v1.svg"
-        alt="Your app will live here!"
-      />
-    </div>
-  );
-}
