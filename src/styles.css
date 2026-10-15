@@ -278,3 +278,9 @@
 .eve-guide .comparison-table:has(thead th:nth-child(5)) { min-width:1260px; }
 .eve-guide .comparison-table:has(thead th:nth-child(4)):not(:has(thead th:nth-child(5))) { min-width:990px; }
 @media(max-width:700px) { .eve-guide .comparison-controls label { max-width:none;min-width:100%; } .eve-guide .comparison-count { margin-left:0; } .eve-guide .comparison-nav { width:100%;justify-content:space-between; } }
+
+.eve-guide .counter-best { display: flex; align-items: center; gap: 1.25rem; margin: 1rem 0; padding: 1rem 1.25rem; border: 1px solid var(--primary); background: color-mix(in oklch, var(--primary) 8%, transparent); }
+.eve-guide .counter-best > div { flex: 1; }
+.eve-guide .counter-best h2 { font-size: 1.6rem; margin: .2rem 0; color: var(--primary); }
+.eve-guide .counter-bar { display: inline-block; width: 6rem; height: .5rem; margin-right: .5rem; background: color-mix(in oklch, var(--primary) 15%, transparent); vertical-align: middle; }
+.eve-guide .counter-bar span { display: block; height: 100%; background: var(--primary); }
