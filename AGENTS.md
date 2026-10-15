@@ -10,5 +10,5 @@
 <!-- LOVABLE:END -->
 
 - Keep the uploaded guide's browser-safe ship data and original ammunition calculations in `src/features/guide/engine.js`; isolate presentation in React so future updates do not silently change the reference math.
-- Define guide styling and semantic color tokens in `src/styles.css`, scoped to `.eve-guide`, to preserve the imported appearance without affecting shared controls.
+- Define guide styling and semantic color tokens in `src/styles.css`, scoped to `.eve-guide`, so the terminal-inspired presentation remains consistent without affecting shared controls.
 - Reference ship imagery through committed Lovable Assets pointers rather than external image-service URLs so the recreated guide owns its media references.
