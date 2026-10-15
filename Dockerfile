@@ -4,11 +4,11 @@ WORKDIR /app
 COPY package.json bun.lock* package-lock.json* ./
 RUN npm install --no-audit --no-fund
 COPY . .
+# Ship images are served from /__l5e/... on Lovable hosting; bundle local copies.
+RUN cp -r docker/static/. public/
 # Target a plain Node server instead of Cloudflare Workers.
 ENV NITRO_PRESET=node-server
 RUN npx vite build
-# Ship images are served from /__l5e/... on Lovable hosting; bundle local copies.
-RUN cp -r docker/static/. .output/public/
 
 FROM node:22-alpine
 WORKDIR /app
