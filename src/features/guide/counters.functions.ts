@@ -6,7 +6,26 @@ export type CounterReport = { targetId: number; sampled: number; counters: Count
 type Attacker = { character_id?: number; ship_type_id?: number; final_blow?: boolean };
 type Killmail = { killmail_time?: string; attackers?: Attacker[] };
 
-// Reads zKillboard solo losses for a hull and tallies the ship the solo killer flew.
+// Groups whose hulls are frigate-sized (the guide's scope). Black Ops are
+// battleship-sized and excluded.
+const FRIGATE_GROUPS = [25, 324, 830, 831, 834, 893, 1022, 1283, 1527];
+
+// ESI group -> type-ID lists change only with expansions, so cache per isolate.
+let frigateIds: Set<number> | null = null;
+async function getFrigateIds(): Promise<Set<number>> {
+  if (frigateIds) return frigateIds;
+  const lists = await Promise.all(
+    FRIGATE_GROUPS.map(g =>
+      fetch(`https://esi.evetech.net/latest/universe/groups/${g}/?datasource=tranquility`)
+        .then(r => (r.ok ? (r.json() as Promise<{ types: number[] }>) : { types: [] as number[] }))
+        .catch(() => ({ types: [] as number[] }))
+    )
+  );
+  frigateIds = new Set(lists.flatMap(l => l.types));
+  return frigateIds;
+}
+
+// Reads zKillboard solo losses for a hull and tallies the frigate the solo killer flew.
 export const getSoloCounters = createServerFn({ method: 'GET' })
   .inputValidator((input: { shipTypeId: number }) => {
     const id = Number(input?.shipTypeId);
