@@ -3,7 +3,7 @@ import { Link } from '@tanstack/react-router';
 import { Button } from '@/components/ui/button';
 import { ships, damageTypes, weapons, sdeBuild, yearbook, shipImage, sortedShips, profile } from './engine';
 import type { Ammo } from './engine';
-import { Crosshair, ExternalLink, Search, RotateCcw, Columns3, Crosshair } from 'lucide-react';
+import { Crosshair, ExternalLink, Search, RotateCcw, Columns3 } from 'lucide-react';
 import orbitalBackground from '@/assets/orbital-background.jpg';
 
 type Ship = (typeof ships)[number];
