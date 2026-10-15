@@ -1,13 +1,8 @@
 @import "tailwindcss" source(none);
-@source "../src";
 @import "tw-animate-css";
-
+@source "../src";
 @custom-variant dark (&:is(.dark *));
-
-/*
- * Design system definition.
- *
- * The @theme inline block maps CSS custom properties to Tailwind utility
+@theme inline block maps CSS custom properties to Tailwind utility
  * classes (e.g. --color-primary -> bg-primary, text-primary).
  *
  * The :root and .dark blocks define the actual color values using oklch.
@@ -61,84 +56,196 @@
   --color-sidebar-ring: var(--sidebar-ring);
 }
 
+
 :root {
-  --radius: 0.625rem;
-  --background: oklch(1 0 0);
-  --foreground: oklch(0.129 0.042 264.695);
-  --card: oklch(1 0 0);
-  --card-foreground: oklch(0.129 0.042 264.695);
-  --popover: oklch(1 0 0);
-  --popover-foreground: oklch(0.129 0.042 264.695);
-  --primary: oklch(0.208 0.042 265.755);
-  --primary-foreground: oklch(0.984 0.003 247.858);
-  --secondary: oklch(0.968 0.007 247.896);
-  --secondary-foreground: oklch(0.208 0.042 265.755);
-  --muted: oklch(0.968 0.007 247.896);
-  --muted-foreground: oklch(0.554 0.046 257.417);
-  --accent: oklch(0.968 0.007 247.896);
-  --accent-foreground: oklch(0.208 0.042 265.755);
-  --destructive: oklch(0.577 0.245 27.325);
-  --destructive-foreground: oklch(0.984 0.003 247.858);
-  --border: oklch(0.929 0.013 255.508);
-  --input: oklch(0.929 0.013 255.508);
-  --ring: oklch(0.704 0.04 256.788);
-  --chart-1: oklch(0.646 0.222 41.116);
-  --chart-2: oklch(0.6 0.118 184.704);
-  --chart-3: oklch(0.398 0.07 227.392);
-  --chart-4: oklch(0.828 0.189 84.429);
-  --chart-5: oklch(0.769 0.188 70.08);
-  --sidebar: oklch(0.984 0.003 247.858);
-  --sidebar-foreground: oklch(0.129 0.042 264.695);
-  --sidebar-primary: oklch(0.208 0.042 265.755);
-  --sidebar-primary-foreground: oklch(0.984 0.003 247.858);
-  --sidebar-accent: oklch(0.968 0.007 247.896);
-  --sidebar-accent-foreground: oklch(0.208 0.042 265.755);
-  --sidebar-border: oklch(0.929 0.013 255.508);
-  --sidebar-ring: oklch(0.704 0.04 256.788);
+ --background: oklch(0.135 0.006 260);
+ --foreground: oklch(0.85 0.008 240);
+ --card: oklch(0.17 0.007 260 / 0.94);
+ --card-foreground: var(--foreground);
+ --popover: oklch(0.17 0.007 260);
+ --popover-foreground: var(--foreground);
+ --primary: oklch(0.81 0.24 141);
+ --primary-foreground: var(--background);
+ --secondary: oklch(0.205 0.009 260);
+ --secondary-foreground: var(--foreground);
+ --muted: oklch(0.215 0.006 260);
+ --muted-foreground: oklch(0.57 0.009 245);
+ --accent: oklch(0.23 0.032 143);
+ --accent-foreground: oklch(0.8 0.15 141);
+ --destructive: oklch(0.73 0.18 25);
+ --destructive-foreground: var(--background);
+ --border: oklch(0.29 0.025 143);
+ --input: var(--border);
+ --ring: var(--primary);
+ --gold: oklch(0.78 0.14 86);
+ --success: var(--primary);
+ --signal-blue: oklch(0.72 0.12 230);
+ --panel-border: oklch(0.27 0.013 245);
+ --panel-fill: oklch(0.145 0.006 260 / 0.90);
+ --panel-inset: oklch(0.125 0.005 260 / 0.8);
+ --page-overlay: oklch(0.13 0.008 260 / 0.82);
+ --signal-dim: oklch(0.55 0.14 141);
+ --signal-faint: oklch(0.25 0.04 141);
+ --shadow-signal: 0 0 16px oklch(0.8 0.23 141 / 0.16);
+ --radius: 0.125rem;
+ --font-sans: "Share Tech Mono", "Courier New", monospace;
+ --font-display: "Share Tech Mono", "Courier New", monospace;
+ --font-body: Arial, Helvetica, sans-serif;
 }
-
-.dark {
-  --background: oklch(0.129 0.042 264.695);
-  --foreground: oklch(0.984 0.003 247.858);
-  --card: oklch(0.208 0.042 265.755);
-  --card-foreground: oklch(0.984 0.003 247.858);
-  --popover: oklch(0.208 0.042 265.755);
-  --popover-foreground: oklch(0.984 0.003 247.858);
-  --primary: oklch(0.929 0.013 255.508);
-  --primary-foreground: oklch(0.208 0.042 265.755);
-  --secondary: oklch(0.279 0.041 260.031);
-  --secondary-foreground: oklch(0.984 0.003 247.858);
-  --muted: oklch(0.279 0.041 260.031);
-  --muted-foreground: oklch(0.704 0.04 256.788);
-  --accent: oklch(0.279 0.041 260.031);
-  --accent-foreground: oklch(0.984 0.003 247.858);
-  --destructive: oklch(0.704 0.191 22.216);
-  --destructive-foreground: oklch(0.984 0.003 247.858);
-  --border: oklch(1 0 0 / 10%);
-  --input: oklch(1 0 0 / 15%);
-  --ring: oklch(0.551 0.027 264.364);
-  --chart-1: oklch(0.488 0.243 264.376);
-  --chart-2: oklch(0.696 0.17 162.48);
-  --chart-3: oklch(0.769 0.188 70.08);
-  --chart-4: oklch(0.627 0.265 303.9);
-  --chart-5: oklch(0.645 0.246 16.439);
-  --sidebar: oklch(0.208 0.042 265.755);
-  --sidebar-foreground: oklch(0.984 0.003 247.858);
-  --sidebar-primary: oklch(0.488 0.243 264.376);
-  --sidebar-primary-foreground: oklch(0.984 0.003 247.858);
-  --sidebar-accent: oklch(0.279 0.041 260.031);
-  --sidebar-accent-foreground: oklch(0.984 0.003 247.858);
-  --sidebar-border: oklch(1 0 0 / 10%);
-  --sidebar-ring: oklch(0.551 0.027 264.364);
-}
-
 @layer base {
-  * {
-    border-color: var(--color-border);
-  }
-
-  body {
-    background-color: var(--color-background);
-    color: var(--color-foreground);
-  }
+ * { box-sizing:border-box;border-color:var(--border); }
+ body { margin:0;background:var(--background);color:var(--foreground);font-family:var(--font-sans); }
+ button,input,select { font:inherit; }
 }
+.eve-guide { position:relative;isolation:isolate;min-height:100vh;font:13px/1.5 var(--font-sans); }
+.eve-guide .orbital-backdrop { position:fixed;inset:0;width:100%;height:100%;object-fit:cover;object-position:center;z-index:-2; }
+.eve-guide::before { content:"";position:fixed;inset:0;background:var(--page-overlay);z-index:-1;pointer-events:none; }
+.eve-guide .app { max-width:1700px;margin:0 auto;padding:0 28px 32px; }
+.eve-guide .system-ribbon { min-height:30px;display:flex;align-items:center;justify-content:space-between;gap:12px;border-bottom:1px solid var(--border);font-size:10px;color:var(--muted-foreground);text-transform:uppercase; }
+.eve-guide .system-ribbon a { color:var(--muted-foreground);text-decoration:none;display:flex;align-items:center;gap:6px; }
+.eve-guide .system-ribbon a:hover { color:var(--primary); }
+.eve-guide .ribbon-title { display:flex;gap:16px;align-items:center; }
+.eve-guide .ribbon-title span:last-child { color:var(--signal-dim); }
+.eve-guide header { display:flex;align-items:center;justify-content:space-between;gap:24px;padding:22px 0 18px;border-bottom:1px solid var(--border); }
+.eve-guide h1 { font:700 29px/1.2 var(--font-display);color:var(--primary);margin:0;letter-spacing:0;text-shadow:var(--shadow-signal); }
+.eve-guide .guide-version { font-size:11px;color:var(--muted-foreground);text-shadow:none;font-weight:400; }
+.eve-guide .brand-cursor { color:var(--primary); }
+.eve-guide .header-sub { margin-top:7px;font-size:10px;text-transform:uppercase;color:var(--muted-foreground); }
+.eve-guide .header-stats { display:flex;align-items:center;gap:26px;flex-shrink:0; }
+.eve-guide .header-stat { display:flex;flex-direction:column;align-items:flex-end;gap:3px; }
+.eve-guide .header-stat small { font-size:9px;color:var(--muted-foreground); }
+.eve-guide .header-stat b { color:var(--foreground);font-size:17px;font-weight:400; }
+.eve-guide .header-stat:last-child b { color:var(--gold); }
+.eve-guide .status-line { display:flex;align-items:center;justify-content:space-between;padding:13px 0 11px;text-transform:uppercase;font-size:10px;color:var(--muted-foreground); }
+.eve-guide .system-status { display:flex;align-items:center;gap:7px;color:var(--primary); }
+.eve-guide .status-led { width:5px;height:5px;background:var(--primary);box-shadow:var(--shadow-signal); }
+.eve-guide .toolbar { display:grid;grid-template-columns:minmax(0,1fr) 200px 160px 100px;gap:8px;padding:12px;background:var(--panel-fill);border:1px solid var(--border);margin-bottom:16px; }
+.eve-guide input,.eve-guide select { width:100%;height:38px;background:var(--panel-inset);color:var(--foreground);border:1px solid var(--border);border-radius:0;padding:9px 11px;font-size:12px;outline:none; }
+.eve-guide input::placeholder { color:var(--signal-dim); }
+.eve-guide input:focus,.eve-guide select:focus { border-color:var(--primary); }
+.eve-guide .search-control { position:relative; }
+.eve-guide .search-control svg { position:absolute;left:12px;top:12px;width:14px;height:14px;color:var(--signal-dim); }
+.eve-guide .search-control input { padding-left:34px; }
+.eve-guide .guide-count-space { display:none; }
+.eve-guide .reset-btn { height:38px;width:100%;border:1px solid var(--border);color:var(--primary);background:var(--accent);border-radius:0;font-size:11px;text-transform:uppercase; }
+.eve-guide .reset-btn:hover { background:var(--signal-faint);border-color:var(--primary); }
+.eve-guide .layout { display:grid;grid-template-columns:180px minmax(0,1fr) minmax(0,490px);gap:16px;align-items:start; }
+.eve-guide .sidebar { display:flex;flex-direction:column;gap:15px; }
+.eve-guide .sidebox { background:var(--panel-fill);border:1px solid var(--border);padding:12px; }
+.eve-guide .sidebox h4 { margin:0 0 9px;font-size:10px;font-weight:400;color:var(--signal-dim);letter-spacing:0; }
+.eve-guide .sidebox h4::before { content:"> "; }
+.eve-guide .sideall { height:auto;width:100%;display:block;text-align:left;white-space:normal;margin:0 0 15px;padding:10px;border-radius:0;border:1px solid var(--border);background:var(--accent);color:var(--primary); }
+.eve-guide .sideall b { display:block;font-size:11px; }
+.eve-guide .sideall span { display:block;font-size:10px;color:var(--signal-dim);margin-top:2px; }
+.eve-guide .sideall:hover { border-color:var(--primary);background:var(--signal-faint); }
+.eve-guide .sideall.active { border-color:var(--gold);color:var(--gold); }
+.eve-guide .sideitem { display:flex;width:100%;height:auto;min-height:31px;padding:6px 4px;justify-content:space-between;text-align:left;white-space:normal;gap:10px;color:var(--muted-foreground);font-weight:400;font-size:11px;border-radius:0; }
+.eve-guide .sideitem:hover { background:var(--secondary);color:var(--foreground); }
+.eve-guide .sideitem.active { background:var(--accent);color:var(--primary); }
+.eve-guide .sidecount { font-size:10px;color:var(--muted-foreground); }
+.eve-guide .data-source { font-size:10px;line-height:1.6;color:var(--muted-foreground); }
+.eve-guide .catalog-region { min-width:0; }
+.eve-guide .catalog-heading { display:flex;align-items:center;justify-content:space-between;gap:8px;margin-bottom:10px;font-size:11px;color:var(--primary);text-transform:uppercase; }
+.eve-guide .catalog-heading span { color:var(--muted-foreground);font-size:9px; }
+.eve-guide .grid { display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:10px; }
+.eve-guide .card { position:relative;display:block;height:auto;padding:0;overflow:hidden;text-align:left;white-space:normal;color:var(--foreground);background:var(--card);border:1px solid var(--panel-border);border-radius:0;min-width:0;transition:border-color .15s,background .15s; }
+.eve-guide .card:hover { border-color:var(--signal-dim);background:var(--secondary); }
+.eve-guide .card.active { border-color:var(--primary);box-shadow:var(--shadow-signal); }
+.eve-guide .shippic { position:relative;height:auto;aspect-ratio:1.3;display:grid;place-items:center;overflow:hidden;background:var(--panel-inset);border-bottom:1px solid var(--panel-border); }
+.eve-guide .ship-img { display:block;width:100%;height:100%;object-fit:contain; }
+.eve-guide .fallback { font-size:32px;color:var(--muted-foreground); }
+.eve-guide .cardbody { padding:10px;min-height:97px; }
+.eve-guide .name { font:700 12px/1.4 var(--font-body); }
+.eve-guide .meta { color:var(--muted-foreground);font-size:10px;line-height:1.4;margin-top:4px; }
+.eve-guide .ybrole { color:var(--muted-foreground);font-size:9px;line-height:1.5;margin-top:7px; }
+.eve-guide .ship-tier { display:flex;align-items:center;gap:5px;color:var(--signal-blue);font-size:8px;text-transform:uppercase;margin-bottom:6px; }
+.eve-guide .ship-tier::before { content:"";width:3px;height:3px;background:currentColor; }
+.eve-guide .tier-top .ship-tier { color:var(--gold); }
+.eve-guide .tier-plus .ship-tier { color:var(--primary); }
+.eve-guide .tier-minus .ship-tier { color:var(--muted-foreground); }
+.eve-guide .ship-number { position:absolute;top:6px;left:7px;font-size:9px;color:var(--foreground);background:var(--panel-inset);padding:2px 5px; }
+.eve-guide .empty { padding:40px 12px;color:var(--muted-foreground);grid-column:1/-1;text-align:center;border:1px solid var(--border);background:var(--panel-fill); }
+.eve-guide .detail { background:var(--panel-fill);border:1px solid var(--border);position:sticky;top:16px;overflow:hidden;min-width:0; }
+.eve-guide .detail-heading { display:flex;justify-content:space-between;align-items:center;gap:8px;padding:12px 15px;border-bottom:1px solid var(--border);font-size:11px;color:var(--primary); }
+.eve-guide .detail-heading span { color:var(--muted-foreground);font-size:9px; }
+.eve-guide .empty-detail { min-height:365px;display:flex;flex-direction:column;justify-content:center;align-items:center;text-align:center;padding:30px 24px; }
+.eve-guide .empty-detail svg { width:52px;height:52px;color:var(--signal-dim);stroke-width:1;margin-bottom:25px; }
+.eve-guide .empty-detail h2 { color:var(--foreground);font-size:15px;font-weight:400;margin:0; }
+.eve-guide .empty-detail p { color:var(--muted-foreground);font-size:10px;margin-top:12px;max-width:220px; }
+.eve-guide .empty-detail .terminal-prompt { color:var(--primary);margin-top:22px;font-size:10px; }
+.eve-guide .hero { display:grid;grid-template-columns:minmax(0,1fr) 125px;gap:14px;padding:15px;border-bottom:1px solid var(--border); }
+.eve-guide h2 { font:700 21px/1.3 var(--font-body);margin:6px 0 0; }
+.eve-guide .sub { color:var(--muted-foreground);font-size:10px; }
+.eve-guide .heroimg { height:120px;background:var(--panel-inset);border:1px solid var(--panel-border); }
+.eve-guide .weak { margin-top:12px;border-left:2px solid var(--gold);padding:5px 0 5px 10px; }
+.eve-guide .weak small { color:var(--gold);font-size:8px; }
+.eve-guide .weak strong { display:block;font-size:24px;line-height:1.25;color:var(--gold); }
+.eve-guide .weak span { display:block;font-size:9px;color:var(--muted-foreground); }
+.eve-guide .section { padding:15px;border-bottom:1px solid var(--border); }
+.eve-guide .section:last-child { border-bottom:0; }
+.eve-guide h3 { margin:0 0 10px;font-size:12px;text-transform:uppercase;color:var(--foreground);font-weight:400; }
+.eve-guide .tacbox { padding:0; }
+.eve-guide .tachead { display:flex;justify-content:space-between;gap:10px;align-items:center; }
+.eve-guide .tactitle { font-size:10px;color:var(--primary); }
+.eve-guide .tactitle::before { content:"> "; }
+.eve-guide .ybbadge { padding:2px 5px;border:1px solid var(--border);color:var(--gold);font-size:9px;white-space:nowrap; }
+.eve-guide .threat-high { color:var(--destructive); }
+.eve-guide .threat-medium { color:var(--gold); }
+.eve-guide .threat-low { color:var(--primary); }
+.eve-guide .weapon-select { display:grid;grid-template-columns:minmax(0,1.3fr) minmax(0,1fr);gap:9px;margin-top:15px; }
+.eve-guide label { display:block;font-size:9px;text-transform:uppercase;color:var(--signal-dim); }
+.eve-guide .weapon-select select { height:34px;font-size:10px;margin-top:5px;padding:6px; }
+.eve-guide .tank-result { min-height:34px;margin-top:5px;padding:7px 9px;border:1px solid var(--border);background:var(--panel-inset);font-size:11px; }
+.eve-guide .ammo-recs { display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:8px;margin-top:12px; }
+.eve-guide .ammo-rec { padding:9px;background:var(--panel-inset);border-top:2px solid var(--destructive);min-width:0; }
+.eve-guide .ammo-rec.application { border-color:var(--signal-blue); }
+.eve-guide .ammo-rec.balance { border-color:var(--gold); }
+.eve-guide .ammo-rec small { display:block;font-size:8px;color:var(--muted-foreground);text-transform:uppercase; }
+.eve-guide .ammo-rec strong { display:block;margin-top:6px;font:700 11px/1.4 var(--font-body); }
+.eve-guide .ammo-metric { display:block;font-size:9px;color:var(--muted-foreground);margin-top:6px;line-height:1.5; }
+.eve-guide .tag { display:block;margin-top:7px;font-size:7px;color:var(--signal-blue); }
+.eve-guide .balance .tag { color:var(--gold); }
+.eve-guide .tacgrid { display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:0 10px;margin-top:12px; }
+.eve-guide .tacitem { padding:10px 0;border-bottom:1px solid var(--panel-border); }
+.eve-guide .tacitem small { display:block;font-size:8px;text-transform:uppercase;color:var(--muted-foreground); }
+.eve-guide .tacitem b { display:block;font-size:11px;font-weight:400;margin-top:4px; }
+.eve-guide .tacitem.yb-weakness b { font:11px/1.5 var(--font-body); }
+.eve-guide .drone-rec,.eve-guide .engage { color:var(--signal-blue); }
+.eve-guide .drone-dmg,.eve-guide .weakness-detail { font-size:9px;color:var(--muted-foreground);margin-top:3px; }
+.eve-guide .weakness-main { color:var(--gold); }
+.eve-guide .source-tag { color:var(--muted-foreground);font:10px/1.65 var(--font-body);margin-top:12px; }
+.eve-guide .resgrid { display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:8px; }
+.eve-guide .res { padding:8px;background:var(--panel-inset); }
+.eve-guide .res span { font-size:9px;color:var(--muted-foreground); }
+.eve-guide .res b { display:block;font-size:17px;color:var(--primary);font-weight:400; }
+.eve-guide .res-meter { display:block;width:100%;height:5px;margin-top:7px; }
+.eve-guide .res-meter::-webkit-meter-bar { background:var(--secondary);border:0;border-radius:0; }
+.eve-guide .res-meter::-webkit-meter-optimum-value { background:var(--primary); }
+.eve-guide .res-meter::-moz-meter-bar { background:var(--primary); }
+.eve-guide .table-wrap { overflow-x:auto; }
+.eve-guide table { width:100%;border-collapse:collapse;font-size:10px; }
+.eve-guide th,.eve-guide td { padding:8px 4px;border-bottom:1px solid var(--panel-border);text-align:right; }
+.eve-guide th { color:var(--muted-foreground);font-weight:400; }
+.eve-guide th:first-child,.eve-guide td:first-child { text-align:left; }
+.eve-guide .note { font:10px/1.65 var(--font-body);color:var(--muted-foreground);margin:10px 0; }
+.eve-guide .ammo { display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:10px; }
+.eve-guide .ammoitem { padding:10px;background:var(--panel-inset);font-size:10px; }
+.eve-guide .ammoitem b { color:var(--signal-blue);font-weight:400; }
+.eve-guide .rank-first { margin-top:7px; }
+.eve-guide .score { color:var(--muted-foreground);font-size:9px;margin-top:7px; }
+.eve-guide .ybbox { padding:0; }
+.eve-guide .ybhead { display:flex;justify-content:space-between;align-items:start;gap:10px; }
+.eve-guide .ybnote { color:var(--muted-foreground);font-size:9px;line-height:1.65; }
+.eve-guide .ybgrid { display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:9px;margin-top:12px; }
+.eve-guide .ybstat { padding:8px;background:var(--panel-inset); }
+.eve-guide .ybstat small { color:var(--muted-foreground);font-size:8px;text-transform:uppercase;display:block; }
+.eve-guide .ybstat b { display:block;font-size:10px;margin-top:5px;font-weight:400; }
+.eve-guide .fitstyles { display:flex;flex-wrap:wrap;gap:7px;margin:12px 0; }
+.eve-guide .fitstyle { font-size:9px;color:var(--signal-blue);padding:3px 6px;border:1px solid var(--panel-border); }
+.eve-guide .source-tag,.eve-guide .tag,.eve-guide .ybstat b,.eve-guide .ammoitem,.eve-guide .ammo-rec,.eve-guide .header-sub { overflow-wrap:anywhere; }
+.eve-guide .footer-status { display:flex;justify-content:space-between;flex-wrap:wrap;gap:10px;color:var(--muted-foreground);border-top:1px solid var(--border);margin-top:24px;padding-top:13px;font-size:9px;text-transform:uppercase; }
+@media(min-width:1500px) { .eve-guide .layout { grid-template-columns:190px minmax(0,1fr) 540px; } .eve-guide .grid { grid-template-columns:repeat(4,minmax(0,1fr)); } }
+@media(max-width:1150px) { .eve-guide .layout { grid-template-columns:160px minmax(0,1fr) minmax(0,400px);gap:12px; } .eve-guide .grid { grid-template-columns:repeat(2,minmax(0,1fr)); } .eve-guide h1 { font-size:25px; } .eve-guide .header-stats { gap:15px; } .eve-guide .hero { grid-template-columns:minmax(0,1fr) 100px; } }
+@media(max-width:950px) { .eve-guide .layout { grid-template-columns:155px minmax(0,1fr); } .eve-guide .detail { grid-column:2;position:static; } .eve-guide .sidebar { grid-column:1;grid-row:1 / span 2; } .eve-guide .grid { grid-template-columns:repeat(3,minmax(0,1fr)); } .eve-guide .header-stats .header-stat:last-child { display:none; } .eve-guide .toolbar { grid-template-columns:minmax(0,1fr) 150px 120px 90px; } }
+@media(max-width:700px) { .eve-guide .app { padding:0 14px 24px; } .eve-guide header { flex-direction:column;align-items:start;gap:15px;padding:19px 0; } .eve-guide h1 { font-size:24px; } .eve-guide .header-stats { justify-content:space-between;width:100%;gap:8px; } .eve-guide .header-stat { align-items:start; } .eve-guide .header-stats .header-stat:last-child { display:flex; } .eve-guide .header-stat b { font-size:14px; } .eve-guide .header-stat small { font-size:8px; } .eve-guide .ribbon-title { gap:8px; } .eve-guide .system-ribbon { font-size:8px; } .eve-guide .toolbar { grid-template-columns:minmax(0,1fr) minmax(0,1fr);padding:9px; } .eve-guide .search-control { grid-column:1 / -1; } .eve-guide .reset-btn { grid-column:1/-1; } .eve-guide .sidebar { display:none; } .eve-guide .layout { grid-template-columns:minmax(0,1fr); } .eve-guide .detail { grid-column:1; } .eve-guide .grid { grid-template-columns:repeat(2,minmax(0,1fr)); } .eve-guide .cardbody { min-height:100px; } .eve-guide .hero { grid-template-columns:minmax(0,1fr) 95px;gap:10px; } .eve-guide h2 { font-size:18px; } .eve-guide .heroimg { height:100px; } .eve-guide .ammo-recs { grid-template-columns:1fr; } .eve-guide .ammo-rec { padding:12px; } .eve-guide .ammo-rec strong { font-size:12px; } .eve-guide .resgrid { grid-template-columns:repeat(2,minmax(0,1fr)); } .eve-guide .ybhead { flex-wrap:wrap; } .eve-guide .ybgrid { grid-template-columns:1fr 1fr; } .eve-guide .tachead { gap:6px; } .eve-guide .tactitle { font-size:9px; } .eve-guide .catalog-heading span { font-size:8px; } }
+@media(prefers-reduced-motion:reduce) { .eve-guide * { transition:none!important; } }
