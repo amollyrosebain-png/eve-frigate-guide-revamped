@@ -2,5 +2,6 @@
 - [x] Preserve all ship images and verify search, filters, selection, and ammunition calculations.
 - [x] Apply the visual style of https://socketkill.com/ while retaining the guide's functionality.
 - [x] Add and verify a side-by-side comparison with ship selection, shared weapon calculations, and key stats.
-- [x] Add a counter selector from zKillboard solo data, limited to frigate hulls only.- [x] Add a credits footer to the main page linking the creator on Twitch, ScotishDex and the EVE Frigates Patreon.
+- [x] Add a counter selector from zKillboard solo data, limited to frigate hulls only.
+- [x] Add a credits footer to the main page linking the creator on Twitch, ScotishDex and the EVE Frigates Patreon.
 - [x] Increase the smallest text sizes in the tactical analysis panel so the labels and notes are easier to read.
