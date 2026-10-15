@@ -186,34 +186,34 @@
 .eve-guide h3 { margin:0 0 10px;font-size:12px;text-transform:uppercase;color:var(--foreground);font-weight:400; }
 .eve-guide .tacbox { padding:0; }
 .eve-guide .tachead { display:flex;justify-content:space-between;gap:10px;align-items:center; }
-.eve-guide .tactitle { font-size:10px;color:var(--primary); }
+.eve-guide .tactitle { font-size:11px;color:var(--primary); }
 .eve-guide .tactitle::before { content:"> "; }
-.eve-guide .ybbadge { padding:2px 5px;border:1px solid var(--border);color:var(--gold);font-size:9px;white-space:nowrap; }
+.eve-guide .ybbadge { padding:2px 5px;border:1px solid var(--border);color:var(--gold);font-size:10px;white-space:nowrap; }
 .eve-guide .threat-high { color:var(--destructive); }
 .eve-guide .threat-medium { color:var(--gold); }
 .eve-guide .threat-low { color:var(--primary); }
 .eve-guide .weapon-select { display:grid;grid-template-columns:minmax(0,1.3fr) minmax(0,1fr);gap:9px;margin-top:15px; }
-.eve-guide label { display:block;font-size:9px;text-transform:uppercase;color:var(--signal-dim); }
-.eve-guide .weapon-select select { height:34px;font-size:10px;margin-top:5px;padding:6px; }
-.eve-guide .tank-result { min-height:34px;margin-top:5px;padding:7px 9px;border:1px solid var(--border);background:var(--panel-inset);font-size:11px; }
+.eve-guide label { display:block;font-size:10px;text-transform:uppercase;color:var(--signal-dim); }
+.eve-guide .weapon-select select { height:36px;font-size:12px;margin-top:5px;padding:6px; }
+.eve-guide .tank-result { min-height:36px;margin-top:5px;padding:7px 9px;border:1px solid var(--border);background:var(--panel-inset);font-size:12px; }
 .eve-guide .ammo-recs { display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:8px;margin-top:12px; }
 .eve-guide .ammo-rec { padding:9px;background:var(--panel-inset);border-top:2px solid var(--destructive);min-width:0; }
 .eve-guide .ammo-rec.application { border-color:var(--signal-blue); }
 .eve-guide .ammo-rec.balance { border-color:var(--gold); }
-.eve-guide .ammo-rec small { display:block;font-size:8px;color:var(--muted-foreground);text-transform:uppercase; }
-.eve-guide .ammo-rec strong { display:block;margin-top:6px;font:700 11px/1.4 var(--font-body); }
-.eve-guide .ammo-metric { display:block;font-size:9px;color:var(--muted-foreground);margin-top:6px;line-height:1.5; }
-.eve-guide .tag { display:block;margin-top:7px;font-size:7px;color:var(--signal-blue); }
+.eve-guide .ammo-rec small { display:block;font-size:10px;color:var(--muted-foreground);text-transform:uppercase; }
+.eve-guide .ammo-rec strong { display:block;margin-top:6px;font:700 12px/1.4 var(--font-body); }
+.eve-guide .ammo-metric { display:block;font-size:11px;color:var(--muted-foreground);margin-top:6px;line-height:1.5; }
+.eve-guide .tag { display:block;margin-top:7px;font-size:10px;color:var(--signal-blue); }
 .eve-guide .balance .tag { color:var(--gold); }
 .eve-guide .tacgrid { display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:0 10px;margin-top:12px; }
 .eve-guide .tacitem { padding:10px 0;border-bottom:1px solid var(--panel-border); }
-.eve-guide .tacitem small { display:block;font-size:8px;text-transform:uppercase;color:var(--muted-foreground); }
-.eve-guide .tacitem b { display:block;font-size:11px;font-weight:400;margin-top:4px; }
-.eve-guide .tacitem.yb-weakness b { font:11px/1.5 var(--font-body); }
+.eve-guide .tacitem small { display:block;font-size:10px;text-transform:uppercase;color:var(--muted-foreground); }
+.eve-guide .tacitem b { display:block;font-size:12px;font-weight:400;margin-top:4px; }
+.eve-guide .tacitem.yb-weakness b { font:12px/1.5 var(--font-body); }
 .eve-guide .drone-rec,.eve-guide .engage { color:var(--signal-blue); }
-.eve-guide .drone-dmg,.eve-guide .weakness-detail { font-size:9px;color:var(--muted-foreground);margin-top:3px; }
+.eve-guide .drone-dmg,.eve-guide .weakness-detail { font-size:11px;color:var(--muted-foreground);margin-top:3px; }
 .eve-guide .weakness-main { color:var(--gold); }
-.eve-guide .source-tag { color:var(--muted-foreground);font:10px/1.65 var(--font-body);margin-top:12px; }
+.eve-guide .source-tag { color:var(--muted-foreground);font:11px/1.65 var(--font-body);margin-top:12px; }
 .eve-guide .resgrid { display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:8px; }
 .eve-guide .res { padding:8px;background:var(--panel-inset); }
 .eve-guide .res span { font-size:9px;color:var(--muted-foreground); }
@@ -247,7 +247,7 @@
 @media(min-width:1500px) { .eve-guide .layout { grid-template-columns:190px minmax(0,1fr) 540px; } .eve-guide .grid { grid-template-columns:repeat(4,minmax(0,1fr)); } }
 @media(max-width:1150px) { .eve-guide .layout { grid-template-columns:160px minmax(0,1fr) minmax(0,400px);gap:12px; } .eve-guide .grid { grid-template-columns:repeat(2,minmax(0,1fr)); } .eve-guide h1 { font-size:25px; } .eve-guide .header-stats { gap:15px; } .eve-guide .hero { grid-template-columns:minmax(0,1fr) 100px; } }
 @media(max-width:950px) { .eve-guide .layout { grid-template-columns:155px minmax(0,1fr); } .eve-guide .detail { grid-column:2;position:static; } .eve-guide .sidebar { grid-column:1;grid-row:1 / span 2; } .eve-guide .grid { grid-template-columns:repeat(3,minmax(0,1fr)); } .eve-guide .header-stats .header-stat:last-child { display:none; } .eve-guide .toolbar { grid-template-columns:minmax(0,1fr) 150px 120px 90px; } }
-@media(max-width:700px) { .eve-guide .app { padding:0 14px 24px; } .eve-guide header { flex-direction:column;align-items:start;gap:15px;padding:19px 0; } .eve-guide h1 { font-size:24px; } .eve-guide .header-stats { justify-content:space-between;width:100%;gap:8px; } .eve-guide .header-stat { align-items:start; } .eve-guide .header-stats .header-stat:last-child { display:flex; } .eve-guide .header-stat b { font-size:14px; } .eve-guide .header-stat small { font-size:8px; } .eve-guide .ribbon-title { gap:8px; } .eve-guide .system-ribbon { font-size:8px; } .eve-guide .toolbar { grid-template-columns:minmax(0,1fr) minmax(0,1fr);padding:9px; } .eve-guide .search-control { grid-column:1 / -1; } .eve-guide .reset-btn { grid-column:1/-1; } .eve-guide .sidebar { display:none; } .eve-guide .layout { grid-template-columns:minmax(0,1fr); } .eve-guide .detail { grid-column:1; } .eve-guide .grid { grid-template-columns:repeat(2,minmax(0,1fr)); } .eve-guide .cardbody { min-height:100px; } .eve-guide .hero { grid-template-columns:minmax(0,1fr) 95px;gap:10px; } .eve-guide h2 { font-size:18px; } .eve-guide .heroimg { height:100px; } .eve-guide .ammo-recs { grid-template-columns:1fr; } .eve-guide .ammo-rec { padding:12px; } .eve-guide .ammo-rec strong { font-size:12px; } .eve-guide .resgrid { grid-template-columns:repeat(2,minmax(0,1fr)); } .eve-guide .ybhead { flex-wrap:wrap; } .eve-guide .ybgrid { grid-template-columns:1fr 1fr; } .eve-guide .tachead { gap:6px; } .eve-guide .tactitle { font-size:9px; } .eve-guide .catalog-heading span { font-size:8px; } }
+@media(max-width:700px) { .eve-guide .app { padding:0 14px 24px; } .eve-guide header { flex-direction:column;align-items:start;gap:15px;padding:19px 0; } .eve-guide h1 { font-size:24px; } .eve-guide .header-stats { justify-content:space-between;width:100%;gap:8px; } .eve-guide .header-stat { align-items:start; } .eve-guide .header-stats .header-stat:last-child { display:flex; } .eve-guide .header-stat b { font-size:14px; } .eve-guide .header-stat small { font-size:8px; } .eve-guide .ribbon-title { gap:8px; } .eve-guide .system-ribbon { font-size:8px; } .eve-guide .toolbar { grid-template-columns:minmax(0,1fr) minmax(0,1fr);padding:9px; } .eve-guide .search-control { grid-column:1 / -1; } .eve-guide .reset-btn { grid-column:1/-1; } .eve-guide .sidebar { display:none; } .eve-guide .layout { grid-template-columns:minmax(0,1fr); } .eve-guide .detail { grid-column:1; } .eve-guide .grid { grid-template-columns:repeat(2,minmax(0,1fr)); } .eve-guide .cardbody { min-height:100px; } .eve-guide .hero { grid-template-columns:minmax(0,1fr) 95px;gap:10px; } .eve-guide h2 { font-size:18px; } .eve-guide .heroimg { height:100px; } .eve-guide .ammo-recs { grid-template-columns:1fr; } .eve-guide .ammo-rec { padding:12px; } .eve-guide .ammo-rec strong { font-size:12px; } .eve-guide .resgrid { grid-template-columns:repeat(2,minmax(0,1fr)); } .eve-guide .ybhead { flex-wrap:wrap; } .eve-guide .ybgrid { grid-template-columns:1fr 1fr; } .eve-guide .tachead { gap:6px; } .eve-guide .tactitle { font-size:10px; } .eve-guide .ammo-rec strong { font-size:12px; } .eve-guide .catalog-heading span { font-size:8px; } }
 @media(prefers-reduced-motion:reduce) { .eve-guide * { transition:none!important; } }
 .eve-guide .comparison-nav { display:flex;align-items:center;gap:12px; }
 .eve-guide .terminal-button { border:1px solid var(--border);border-radius:0;color:var(--primary);background:var(--panel-fill);font-size:11px;text-transform:uppercase; }
